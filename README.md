@@ -36,6 +36,8 @@ Sıra önemli. Önce DNS ayarlanmalı, sonra GitHub'a özel alan adı girilmeli.
 Sonra AdMob'da geliştirici web sitesi olarak `https://alaystudio.app` girilir ve `app-ads.txt` buradan doğrulanır.
 
 ## Oyunların alt alan adları (Cloudflare Pages)
+Adım adım rehber, DNS kayıtları, yeni oyun ekleme ve sorun giderme: **[YAYIN.md](YAYIN.md)**.
+
 Her oyun kendi reposundan yayınlanır. Repolarda `scripts/build-web.mjs` var; yalnızca service worker'ın listelediği dosyaları
 `web/` klasörüne kopyalar (native projeler, mağaza görselleri ve notlar siteye çıkmaz). Web sürümünde reklam ve satın alma yoktur.
 
