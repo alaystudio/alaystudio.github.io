@@ -45,6 +45,8 @@ Her oyun kendi reposundan yayınlanır. Repolarda `scripts/build-web.mjs` var; y
 | Bloom Blast | `alaystudio/bloom-blast` | `main` | `bloomblast.alaystudio.app` |
 | Shoova | `alaystudio/shoova` | `main` | `shoova.alaystudio.app` |
 | Drift Garden | `alaystudio/drift-garden` | `main` | `driftgarden.alaystudio.app` |
+| Lexiblok | `alaystudio/lexiblok` | `main` | `lexiblok.alaystudio.app` (build `node tools/build.js`, çıktı `dist`) |
+| Koz Kimde | `alaystudio/batak` | `main` | `kozkimde.alaystudio.app` |
 
 Her oyun için bir kez:
 1. Cloudflare → **Workers & Pages → Create → Pages → Connect to Git**. GitHub'ı bağla ve Cloudflare uygulamasına bu repoya erişim ver.
