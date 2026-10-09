@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
+  <defs><radialGradient id="felt" cx="50%" cy="35%" r="80%"><stop offset="0" stop-color="#1f7a4d"/><stop offset="1" stop-color="#0d3d27"/></radialGradient></defs>
+  <rect width="192" height="192" rx="42" fill="url(#felt)"/>
+  <g transform="translate(96 150)">
+    <g transform="rotate(-22)"><rect x="-30" y="-108" width="60" height="86" rx="9" fill="#f7f3ea" stroke="#d9d2c2" stroke-width="2"/><text x="-18" y="-82" font-family="Georgia, serif" font-size="22" font-weight="700" fill="#1d1d1d">A</text></g>
+    <g transform="rotate(0)"><rect x="-30" y="-112" width="60" height="86" rx="9" fill="#f7f3ea" stroke="#d9d2c2" stroke-width="2"/><text x="-18" y="-86" font-family="Georgia, serif" font-size="22" font-weight="700" fill="#c8102e">K</text></g>
+    <g transform="rotate(22)"><rect x="-30" y="-108" width="60" height="86" rx="9" fill="#f7f3ea" stroke="#d9d2c2" stroke-width="2"/><text x="-18" y="-82" font-family="Georgia, serif" font-size="22" font-weight="700" fill="#1d1d1d">Q</text></g>
+  </g>
+  <path d="M96 58 C 80 74, 70 84, 82 96 C 88 101, 94 98, 96 92 C 98 98, 104 101, 110 96 C 122 84, 112 74, 96 58 Z M96 92 L 89 112 H 103 Z" fill="#c8102e" transform="translate(0 30) scale(1)"/>
+</svg>

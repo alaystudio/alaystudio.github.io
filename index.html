@@ -2,33 +2,307 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Alay Studio</title>
+<meta name="description" content="Alay Studio makes short, replayable mobile games: Orbitap, Lexiblok, Bloom Blast, Shoova, Drift Garden and Koz Kimde.">
+<meta property="og:title" content="Alay Studio">
+<meta property="og:description" content="Short, replayable mobile games. No accounts, no energy timers.">
+<meta property="og:type" content="website">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Nunito:wght@500;700;800&family=DM+Mono:wght@500&display=swap">
 <style>
-  :root { color-scheme: dark; }
-  body { margin: 0; background: #05060f; color: #e8edff; font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; padding: 48px 16px; }
-  main { max-width: 60ch; margin: 0 auto; }
-  h1 { margin: 0 0 8px; font-size: 28px; }
-  h2 { margin: 32px 0 8px; font-size: 19px; color: #3de8ff; }
-  p { margin: 0 0 12px; color: #c9d0ee; }
-  a { color: #3de8ff; }
+  /* Layout: a quiet studio frame; each game card carries its own game's colors, the studio stays neutral. */
+  :root {
+    --bg: #eef1f3;
+    --surface: #ffffff;
+    --ink: #10161d;
+    --muted: #55606c;
+    --line: rgba(16, 22, 29, 0.12);
+    --accent: #e8492b;
+    --accent-ink: #ffffff;
+    --chip: rgba(16, 22, 29, 0.06);
+    --shadow: 0 1px 2px rgba(16, 22, 29, 0.06), 0 8px 24px rgba(16, 22, 29, 0.06);
+    --display: "Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+    --body: "Nunito", ui-rounded, "Segoe UI", system-ui, sans-serif;
+    --mono: "DM Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0c1015; --surface: #151b22; --ink: #eef2f6; --muted: #98a4b1; --line: rgba(255, 255, 255, 0.12);
+      --accent: #ff6e50; --accent-ink: #1a0b06; --chip: rgba(255, 255, 255, 0.07); --shadow: 0 1px 2px rgba(0, 0, 0, 0.4); color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0c1015; --surface: #151b22; --ink: #eef2f6; --muted: #98a4b1; --line: rgba(255, 255, 255, 0.12);
+    --accent: #ff6e50; --accent-ink: #1a0b06; --chip: rgba(255, 255, 255, 0.07); --shadow: 0 1px 2px rgba(0, 0, 0, 0.4); color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 500 17px/1.6 var(--body); }
+  .wrap { max-width: 1120px; margin: 0 auto; padding-inline: max(16px, env(safe-area-inset-left, 0px)); }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+  .mono { font-family: var(--mono); font-size: 12.5px; letter-spacing: 0.04em; }
+
+  /* header */
+  header.top { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: calc(18px + env(safe-area-inset-top, 0px)) 18px; }
+  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font: 800 19px/1 var(--display); letter-spacing: -0.01em; }
+  .brand svg { width: 30px; height: 30px; }
+  nav.links { display: flex; align-items: center; gap: 6px; }
+  nav.links a { text-decoration: none; font-weight: 700; color: var(--muted); padding: 8px 10px; border-radius: 10px; }
+  nav.links a:hover { color: var(--ink); background: var(--chip); }
+  .lang { appearance: none; font: 500 13px/1 var(--mono); color: var(--ink); background: var(--chip); border: 1px solid var(--line); border-radius: 999px; padding: 8px 12px; cursor: pointer; }
+
+  /* hero */
+  .hero { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); align-items: center; gap: 32px; padding-block: 40px 56px; }
+  .hero h1 { margin: 0; font: 800 clamp(52px, 9vw, 112px)/0.92 var(--display); letter-spacing: -0.035em; text-wrap: balance; }
+  .hero h1 .accent { color: var(--accent); }
+  .hero p.lede { margin: 20px 0 0; max-width: 34ch; font-size: clamp(18px, 2.2vw, 21px); color: var(--muted); text-wrap: pretty; }
+  .hero .facts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; padding: 0; list-style: none; }
+  .hero .facts li { padding: 6px 12px; border-radius: 999px; background: var(--chip); border: 1px solid var(--line); }
+
+  /* the shelf: game icons scattered like stickers */
+  .shelf { position: relative; aspect-ratio: 1 / 0.82; max-width: 100%; }
+  .shelf a { position: absolute; width: 27%; aspect-ratio: 1; border-radius: 22%; overflow: hidden; box-shadow: 0 10px 30px rgba(16, 22, 29, 0.22); transform: rotate(var(--r)); transition: transform 0.25s cubic-bezier(0.2, 1.4, 0.4, 1); }
+  .shelf a img { width: 100%; height: 100%; display: block; }
+  .shelf a:hover, .shelf a:focus-visible { transform: rotate(0deg) scale(1.08); z-index: 2; }
+
+  /* games */
+  section { padding-block: 24px 48px; }
+  .section-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 20px; }
+  h2 { margin: 0; font: 800 clamp(30px, 4vw, 42px)/1.05 var(--display); letter-spacing: -0.02em; text-wrap: balance; }
+  .section-head p { margin: 0; color: var(--muted); max-width: 46ch; }
+  .games { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: 18px; }
+  .game { display: flex; flex-direction: column; min-width: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; box-shadow: var(--shadow); scroll-margin-top: 20px; }
+  .game .cover { position: relative; display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; padding: 18px; min-height: 132px; background: linear-gradient(135deg, var(--g1), var(--g2)); color: #fff; }
+  .game .cover img { width: 84px; height: 84px; border-radius: 20px; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.28); display: block; flex: none; }
+  .game .cover .genre { align-self: flex-start; padding: 5px 10px; border-radius: 999px; background: rgba(0, 0, 0, 0.28); color: #fff; }
+  .game .body { display: flex; flex-direction: column; gap: 10px; padding: 18px; flex: 1; }
+  .game h3 { margin: 0; font: 800 26px/1.1 var(--display); letter-spacing: -0.015em; }
+  .game .pitch { margin: 0; color: var(--muted); }
+  .game .spec { margin: 0; color: var(--muted); }
+  .meta { display: flex; flex-wrap: wrap; gap: 6px; padding: 0; margin: 0; list-style: none; }
+  .meta li { padding: 4px 10px; border-radius: 999px; background: var(--chip); font-weight: 700; font-size: 14px; }
+  .status { display: inline-flex; align-items: center; gap: 6px; }
+  .status::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--dot); }
+  .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; margin-top: auto; padding-top: 6px; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 11px 16px; border-radius: 12px; font-weight: 800; text-decoration: none; background: var(--accent); color: var(--accent-ink); }
+  .btn:hover { filter: brightness(1.06); }
+  .btn[aria-disabled="true"] { background: var(--chip); color: var(--muted); pointer-events: none; }
+  .actions .link { font-weight: 700; color: var(--muted); }
+  .actions .link:hover { color: var(--ink); }
+
+  /* about + contact */
+  .about { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px; align-items: start; }
+  .about h2 { margin-bottom: 14px; }
+  .about p { margin: 0 0 14px; max-width: 60ch; }
+  .principles { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+  .principles li { padding: 14px 16px; border-radius: 14px; background: var(--surface); border: 1px solid var(--line); }
+  .principles b { display: block; font-family: var(--display); font-size: 19px; letter-spacing: -0.01em; }
+  .contact { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 6px; }
+  .contact code { font: 500 16px var(--mono); padding: 10px 14px; border-radius: 12px; background: var(--surface); border: 1px solid var(--line); user-select: all; overflow-wrap: anywhere; }
+  .copy { appearance: none; font: 700 15px var(--body); color: var(--ink); background: var(--chip); border: 1px solid var(--line); border-radius: 12px; padding: 10px 14px; cursor: pointer; }
+
+  footer { border-top: 1px solid var(--line); padding-block: 24px calc(32px + env(safe-area-inset-bottom, 0px)); color: var(--muted); font-size: 15px; }
+  footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 24px; }
+  footer ul { display: flex; flex-wrap: wrap; gap: 6px 16px; margin: 0; padding: 0; list-style: none; }
+
+  @media (max-width: 760px) {
+    .hero { grid-template-columns: 1fr; padding-block: 16px 32px; }
+    .shelf { width: 100%; max-width: 420px; margin: 0 auto; }
+    .about { grid-template-columns: 1fr; }
+    nav.links a.hide-sm { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 </style>
 </head>
 <body>
-<main>
-  <h1>Alay Studio</h1>
-  <p>Independent mobile game developer.</p>
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="#top" aria-label="Alay Studio">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9" fill="var(--accent)"/><path d="M9 23 16 8l7 15M11.6 18h8.8" fill="none" stroke="var(--accent-ink)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Alay Studio
+    </a>
+    <nav class="links">
+      <a href="#games" data-t="navGames">Games</a>
+      <a href="#about" class="hide-sm" data-t="navAbout">About</a>
+      <button class="lang" id="lang" type="button" aria-label="Türkçe">TR</button>
+    </nav>
+  </header>
 
-  <h2>Orbitap: One Tap Orbit</h2>
-  <p>A one-tap orbit arcade game. Dodge obstacles, collect stars, beat your best.</p>
-  <p><a href="https://alaystudio.github.io/mobilegame/privacy.html">Privacy Policy / Gizlilik Politikası</a></p>
+  <main id="top">
+    <div class="hero">
+      <div>
+        <h1><span class="h1a" data-t="heroA">Small games,</span><br><span class="accent" data-t="heroSpan">big replay.</span></h1>
+        <p class="lede" data-t="lede">Short, replayable mobile games from an independent studio. Pick one up for a minute, put it down an hour later.</p>
+        <ul class="facts mono">
+          <li data-t="fact1">No accounts</li>
+          <li data-t="fact2">No energy timers</li>
+          <li data-t="fact3">English &amp; Türkçe</li>
+        </ul>
+      </div>
+      <div class="shelf" id="shelf" aria-label="Games"></div>
+    </div>
 
-  <h2>Lexiblok: Word Block Puzzle</h2>
-  <p>A word and block puzzle game in English and Turkish. Drop letter blocks, spell words, clear the board.</p>
-  <p><a href="https://alaystudio.github.io/word-blocks/privacy.html">Privacy Policy / Gizlilik Politikası</a></p>
+    <section id="games">
+      <div class="section-head">
+        <h2 data-t="gamesTitle">The games</h2>
+        <p data-t="gamesSub">Every game is free to play. Rewarded ads are optional, and your progress stays on your device.</p>
+      </div>
+      <div class="games" id="gameList"></div>
+    </section>
 
-  <h2>Contact</h2>
-  <p><a href="mailto:a.aydogan@outlook.com">a.aydogan@outlook.com</a></p>
-</main>
+    <section id="about">
+      <div class="about">
+        <div>
+          <h2 data-t="aboutTitle">About the studio</h2>
+          <p data-t="about1">Alay Studio is an independent game studio run by Ali Aydoğan. Every game starts as a single, simple rule and gets tuned until it is hard to put down.</p>
+          <p data-t="about2">Levels are generated by code, so they never run out, and every game is built for both English and Turkish players.</p>
+          <div class="contact">
+            <code id="email">a.aydogan@outlook.com</code>
+            <button class="copy" id="copy" type="button" data-t="copy">Copy email</button>
+          </div>
+        </div>
+        <ul class="principles">
+          <li><b data-t="p1t">Fair to play</b><span data-t="p1">No energy bars or waiting. Ads give optional rewards; they never block the game.</span></li>
+          <li><b data-t="p2t">Private by default</b><span data-t="p2">No sign-up. Scores and settings are saved on your device, not on our servers.</span></li>
+          <li><b data-t="p3t">Endless by design</b><span data-t="p3">Seeded level generators mean every player gets the same fair level, and there is always a next one.</span></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+</div>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Alay Studio</span>
+    <ul id="privacyLinks"></ul>
+  </div>
+</footer>
+
+<script>
+(() => {
+  'use strict';
+  // Game list: set `web` to the game's address once it is deployed, and fill `appStore` / `playStore` when it is published.
+  const GAMES = [
+    { id: 'orbitap', name: 'Orbitap', icon: 'games/orbitap.png', g1: '#0b1030', g2: '#1b5c86', status: 'soon',
+      web: null, appStore: null, playStore: null, privacy: 'mobilegame/privacy.html',
+      genre: { en: 'One-tap arcade', tr: 'Tek dokunuş arcade' },
+      pitch: { en: 'Tap to jump between orbits, dodge at the last moment for a PERFECT, and race everyone on the same daily course.', tr: 'Dokunarak yörünge değiştir, son anda kaçıp PERFECT yap ve günlük parkurda herkesle yarış.' },
+      spec: { en: '1 tap · 30–120 s runs · daily challenge', tr: '1 dokunuş · 30–120 sn turlar · günlük meydan okuma' } },
+    { id: 'lexiblok', name: 'Lexiblok', icon: 'games/lexiblok.svg', g1: '#0f2a2c', g2: '#1f6a5e', status: 'soon',
+      web: null, appStore: null, playStore: null, privacy: 'word-blocks/privacy.html',
+      genre: { en: 'Word & block puzzle', tr: 'Kelime ve blok bulmaca' },
+      pitch: { en: 'Drop letter blocks, spell words and clear the board.', tr: 'Harf bloklarını bırak, kelime kur ve tahtayı temizle.' },
+      spec: { en: 'English and Turkish word lists', tr: 'İngilizce ve Türkçe kelime listeleri' } },
+    { id: 'bloom-blast', name: 'Bloom Blast', icon: 'games/bloom-blast.png', g1: '#2f7d4f', g2: '#8fcf5c', status: 'dev',
+      web: null, appStore: null, playStore: null, privacy: 'bloom-blast/privacy.html',
+      genre: { en: 'Block puzzle + garden', tr: 'Blok bulmaca + bahçe' },
+      pitch: { en: 'Clear lines to earn seeds and grow a garden that blooms with every combo.', tr: 'Satır temizleyip tohum kazan, her komboda çiçek açan bahçeni büyüt.' },
+      spec: { en: '8×8 board · endless levels · 2 gardens', tr: '8×8 tahta · sınırsız seviye · 2 bahçe' } },
+    { id: 'shoova', name: 'Shoova', icon: 'games/shoova.png', g1: '#134247', g2: '#2f8f95', status: 'dev',
+      web: null, appStore: null, playStore: null, privacy: 'shoova/privacy.html',
+      genre: { en: 'Tap-away puzzle', tr: 'Kaçırma bulmacası' },
+      pitch: { en: 'Each critter runs the way it faces. Tap them in the right order and shoo them all off the board.', tr: 'Her yaratık baktığı yöne koşar. Doğru sırayla dokun, hepsini tahtadan kışla.' },
+      spec: { en: 'Every level solvable · 3 hearts', tr: 'Her seviye çözülebilir · 3 can' } },
+    { id: 'drift-garden', name: 'Drift Garden', icon: 'games/drift-garden.png', g1: '#161b36', g2: '#3a3f78', status: 'dev',
+      web: null, appStore: null, playStore: null, privacy: 'drift-garden/privacy.html',
+      genre: { en: 'Calm music game', tr: 'Sakin müzik oyunu' },
+      pitch: { en: 'Pop drifting balloons in order to play the melody yourself, and grow a quiet night garden.', tr: 'Süzülen balonlara sırayla dokunup melodiyi kendin çal, sakin bir gece bahçesi büyüt.' },
+      spec: { en: '25 songs · no timers · calm motion mode', tr: '25 şarkı · süre yok · sakin hareket modu' } },
+    { id: 'koz-kimde', name: 'Koz Kimde', icon: 'games/koz-kimde.svg', g1: '#0d3d27', g2: '#1f7a4d', status: 'dev',
+      web: null, appStore: null, playStore: null, privacy: null,
+      genre: { en: 'Card game', tr: 'Kart oyunu' },
+      pitch: { en: 'A trump-taking card game with a Turkish table feel.', tr: 'Türk masası havasında, koz almaya dayalı bir kart oyunu.' },
+      spec: null },
+  ];
+  const T = {
+    en: {
+      navGames: 'Games', navAbout: 'About', heroA: 'Small games,', heroSpan: 'big replay.',
+      lede: 'Short, replayable mobile games from an independent studio. Pick one up for a minute, put it down an hour later.',
+      fact1: 'No accounts', fact2: 'No energy timers', fact3: 'English & Türkçe',
+      gamesTitle: 'The games', gamesSub: 'Every game is free to play. Rewarded ads are optional, and your progress stays on your device.',
+      aboutTitle: 'About the studio',
+      about1: 'Alay Studio is an independent game studio run by Ali Aydoğan. Every game starts as a single, simple rule and gets tuned until it is hard to put down.',
+      about2: 'Levels are generated by code, so they never run out, and every game is built for both English and Turkish players.',
+      copy: 'Copy email', copied: 'Copied', p1t: 'Fair to play', p1: 'No energy bars or waiting. Ads give optional rewards; they never block the game.',
+      p2t: 'Private by default', p2: 'No sign-up. Scores and settings are saved on your device, not on our servers.',
+      p3t: 'Endless by design', p3: 'Seeded level generators mean every player gets the same fair level, and there is always a next one.',
+      play: 'Play on the web', webSoon: 'Web version soon', privacy: 'Privacy', appStore: 'App Store', playStore: 'Google Play',
+      soon: 'Coming to App Store & Google Play', dev: 'In development', live: 'Available now', privacyOf: '{name} privacy',
+    },
+    tr: {
+      navGames: 'Oyunlar', navAbout: 'Hakkında', heroA: 'Küçük oyunlar,', heroSpan: 'bitmeyen keyif.',
+      lede: 'Bağımsız bir stüdyodan kısa ve tekrar tekrar oynanan mobil oyunlar. Bir dakikalığına açarsın, bir saat sonra kapatırsın.',
+      fact1: 'Hesap yok', fact2: 'Enerji beklemesi yok', fact3: 'English & Türkçe',
+      gamesTitle: 'Oyunlar', gamesSub: 'Bütün oyunlar ücretsiz. Ödüllü reklamlar isteğe bağlı, ilerlemen cihazında kalır.',
+      aboutTitle: 'Stüdyo hakkında',
+      about1: 'Alay Studio, Ali Aydoğan\'ın yürüttüğü bağımsız bir oyun stüdyosu. Her oyun tek ve basit bir kuralla başlar, elden bırakılmayacak hale gelene kadar ayarlanır.',
+      about2: 'Seviyeler kodla üretilir, bu yüzden hiç bitmez. Her oyun hem İngilizce hem Türkçe oyuncular için hazırlanır.',
+      copy: 'E-postayı kopyala', copied: 'Kopyalandı', p1t: 'Adil oyun', p1: 'Enerji çubuğu ya da bekleme yok. Reklamlar isteğe bağlı ödül verir, oyunu asla kilitlemez.',
+      p2t: 'Gizlilik öncelikli', p2: 'Kayıt yok. Skorların ve ayarların cihazında saklanır, sunucularımızda değil.',
+      p3t: 'Sonsuz tasarım', p3: 'Tohumlu seviye üreteçleri sayesinde herkes aynı adil seviyeyi oynar ve her zaman bir sonraki seviye vardır.',
+      play: 'Web\'de oyna', webSoon: 'Web sürümü yakında', privacy: 'Gizlilik', appStore: 'App Store', playStore: 'Google Play',
+      soon: 'App Store ve Google Play\'e geliyor', dev: 'Geliştiriliyor', live: 'Şimdi oynanabilir', privacyOf: '{name} gizlilik',
+    },
+  };
+  const DOTS = { soon: '#f5a524', dev: '#7c8a99', live: '#22b573' };
+  const $ = (id) => document.getElementById(id);
+  const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+  let lang = '';
+  try { lang = localStorage.getItem('alay.lang') || ''; } catch (e) { lang = ''; }
+  if (lang !== 'en' && lang !== 'tr') lang = (navigator.language || 'en').toLowerCase().startsWith('tr') ? 'tr' : 'en';
+
+  function render() {
+    const t = T[lang];
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-t]').forEach((el) => { el.textContent = t[el.dataset.t]; });
+    $('lang').textContent = lang === 'en' ? 'TR' : 'EN';
+    $('lang').setAttribute('aria-label', lang === 'en' ? 'Türkçe' : 'English');
+
+    const tilts = [-8, 5, -3, 7, -6, 4];
+    const spots = [[2, 6], [37, 0], [70, 10], [6, 52], [40, 44], [72, 58]];
+    $('shelf').innerHTML = GAMES.map((g, i) => `<a href="#${g.id}" style="left:${spots[i][0]}%;top:${spots[i][1]}%;--r:${tilts[i]}deg" aria-label="${esc(g.name)}"><img src="${g.icon}" alt="" width="192" height="192"></a>`).join('');
+
+    $('gameList').innerHTML = GAMES.map((g) => {
+      const stores = [g.appStore && `<a class="link" href="${g.appStore}" rel="noopener">${t.appStore}</a>`, g.playStore && `<a class="link" href="${g.playStore}" rel="noopener">${t.playStore}</a>`].filter(Boolean).join('');
+      return `<article class="game" id="${g.id}" style="--g1:${g.g1};--g2:${g.g2}">
+        <div class="cover"><img src="${g.icon}" alt="" width="84" height="84"><span class="genre mono">${esc(g.genre[lang])}</span></div>
+        <div class="body">
+          <h3>${esc(g.name)}</h3>
+          <p class="pitch">${esc(g.pitch[lang])}</p>
+          ${g.spec ? `<p class="spec mono">${esc(g.spec[lang])}</p>` : ''}
+          <ul class="meta"><li class="status" style="--dot:${DOTS[g.status]}">${esc(t[g.status])}</li></ul>
+          <div class="actions">
+            ${g.web ? `<a class="btn" href="${g.web}">${t.play} →</a>` : `<span class="btn" aria-disabled="true">${t.webSoon}</span>`}
+            ${stores}
+            ${g.privacy ? `<a class="link" href="${g.privacy}">${t.privacy}</a>` : ''}
+          </div>
+        </div>
+      </article>`;
+    }).join('');
+
+    $('privacyLinks').innerHTML = GAMES.filter((g) => g.privacy).map((g) => `<li><a href="${g.privacy}">${esc(t.privacyOf.replace('{name}', g.name))}</a></li>`).join('');
+  }
+
+  $('lang').addEventListener('click', () => {
+    lang = lang === 'en' ? 'tr' : 'en';
+    try { localStorage.setItem('alay.lang', lang); } catch (e) { /* storage blocked */ }
+    render();
+  });
+  $('copy').addEventListener('click', () => {
+    const done = () => { $('copy').textContent = T[lang].copied; setTimeout(() => { $('copy').textContent = T[lang].copy; }, 1600); };
+    const select = () => { const r = document.createRange(); r.selectNodeContents($('email')); const s = getSelection(); s.removeAllRanges(); s.addRange(r); };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText($('email').textContent).then(done, select);
+    else select();
+  });
+  render();
+})();
+</script>
 </body>
 </html>
