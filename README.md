@@ -35,5 +35,25 @@ Sıra önemli. Önce DNS ayarlanmalı, sonra GitHub'a özel alan adı girilmeli.
 
 Sonra AdMob'da geliştirici web sitesi olarak `https://alaystudio.app` girilir ve `app-ads.txt` buradan doğrulanır.
 
-## Oyunların alt alan adları
-Her oyun kendi reposundan Cloudflare Pages ile yayınlanır ve `oyun.alaystudio.app` alt alan adına bağlanır (ayrıntılar her oyunun reposunda). Bir oyun yayına girince buradaki `GAMES` kaydında `web` alanını doldur.
+## Oyunların alt alan adları (Cloudflare Pages)
+Her oyun kendi reposundan yayınlanır. Repolarda `scripts/build-web.mjs` var; yalnızca service worker'ın listelediği dosyaları
+`web/` klasörüne kopyalar (native projeler, mağaza görselleri ve notlar siteye çıkmaz). Web sürümünde reklam ve satın alma yoktur.
+
+| Oyun | Repo | Dal | Alt alan adı |
+|---|---|---|---|
+| Orbitap | `alaystudio/mobilegame` | `claude/store-release` | `orbitap.alaystudio.app` |
+| Bloom Blast | `alaystudio/bloom-blast` | `main` | `bloomblast.alaystudio.app` |
+| Shoova | `alaystudio/shoova` | `main` | `shoova.alaystudio.app` |
+| Drift Garden | `alaystudio/drift-garden` | `main` | `driftgarden.alaystudio.app` |
+
+Her oyun için bir kez:
+1. Cloudflare → **Workers & Pages → Create → Pages → Connect to Git**. GitHub'ı bağla ve Cloudflare uygulamasına bu repoya erişim ver.
+2. Dalı seç. **Framework preset:** None. **Build command:** `node scripts/build-web.mjs`. **Build output directory:** `web`.
+3. **Save and Deploy.** Oyun önce `<proje>.pages.dev` adresinde açılır; orada dene.
+4. Projede **Custom domains → Set up a custom domain** → alt alan adını yaz (ör. `shoova.alaystudio.app`).
+   Alan adının DNS'i Cloudflare'de değilse, alan adı firmasının panelinde Cloudflare'in gösterdiği CNAME kaydını ekle
+   (`shoova` → `<proje>.pages.dev`).
+5. Oyun açılınca bu repodaki `index.html` → `GAMES` içinde `web` alanını doldur.
+
+Bundan sonra repoya her push otomatik yayınlanır. Derleme `npm install` aşamasında takılırsa (paketler mobil uygulama için),
+projenin ortam değişkenlerine `SKIP_DEPENDENCY_INSTALL = true` ekle; derleme betiği hiçbir paket kullanmaz.
