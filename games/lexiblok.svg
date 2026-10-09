@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
-  <rect width="192" height="192" rx="42" fill="#0f2a2c"/>
-  <g font-family="Nunito, Arial Rounded MT Bold, Arial, sans-serif" font-weight="900" font-size="46" text-anchor="middle">
-    <rect x="34" y="40" width="56" height="56" rx="12" fill="#ffcd3c"/><text x="62" y="84" fill="#0f2a2c">L</text>
-    <rect x="102" y="40" width="56" height="56" rx="12" fill="#3fc3a6"/><text x="130" y="84" fill="#0f2a2c">E</text>
-    <rect x="34" y="104" width="56" height="56" rx="12" fill="#3fc3a6"/><text x="62" y="148" fill="#0f2a2c">X</text>
-    <rect x="102" y="104" width="56" height="56" rx="12" fill="#ffcd3c"/><text x="130" y="148" fill="#0f2a2c">I</text>
-  </g>
-</svg>

@@ -48,6 +48,9 @@ Her oyun kendi reposundan yayınlanır. Repolarda `scripts/build-web.mjs` var; y
 | Lexiblok | `alaystudio/lexiblok` | `main` | `lexiblok.alaystudio.app` (build `node tools/build.js`, çıktı `dist`) |
 | Koz Kimde | `alaystudio/batak` | `main` | `kozkimde.alaystudio.app` |
 
+Cloudflare proje adresleri: `mobilegame-4jx`, `lexiblok`, `bloom-blast`, `shoova`, `drift-garden`, `batak-4n2` (`.pages.dev`).
+alaystudio.app DNS'i Cloudflare'de; alt alan adlarının CNAME kayıtlarını Cloudflare kendisi oluşturdu.
+
 Her oyun için bir kez:
 1. Cloudflare → **Workers & Pages → Create → Pages → Connect to Git**. GitHub'ı bağla ve Cloudflare uygulamasına bu repoya erişim ver.
 2. Dalı seç. **Framework preset:** None. **Build command:** `node scripts/build-web.mjs`. **Build output directory:** `web`.
