@@ -30,7 +30,7 @@
 
   <section id="tr" lang="tr">
     <h1>Lexiblok Gizlilik Politikası</h1>
-    <p class="meta">Son güncelleme: 14 Ekim 2026 · Geliştirici: Alay Studio</p>
+    <p class="meta">Son güncelleme: 15 Ekim 2026 · Geliştirici: Alay Studio</p>
 
     <p>Lexiblok: Word Block Puzzle, hesap açmadan oynanan bir kelime ve blok bulmaca oyunudur. Bu sayfa hangi verilerin neden işlendiğini, nerede saklandığını ve haklarını açıklar.</p>
 
@@ -56,6 +56,9 @@
     <h2>Yeni bölümler ve hediyeler</h2>
     <p>Oyun, uygulama güncellemesi beklemeden yeni bölümleri almak için açılışta bölüm dosyalarını sunucumuzdan (Google Firebase Hosting) indirir. Ayrıca sana ya da tüm oyunculara tanımlanmış bir altın hediyesi olup olmadığını oyuncu kimliğinle Google Cloud Firestore'a sorar; bu istekte oyuncu kimliği dışında veri gönderilmez. Bu istekte kişisel veri gönderilmez. Ancak her web sunucusunda olduğu gibi IP adresin ve istek zamanı, güvenlik ve işletim amacıyla Google'ın sunucu kayıtlarında kısa süre tutulabilir.</p>
 
+    <h2>Oyuncu özeti</h2>
+    <p>Destek verebilmek (örneğin kaybolan altınları geri yüklemek) ve oyunu geliştirmek için oyun, ilerlemenin bir özetini Google Cloud Firestore'da oyuncu kimliğine bağlı bir kayıtta tutar: altın bakiyesi, güçlendirici sayıları, kazanılan bölüm sayısı, ulaşılan en yüksek bölüm, yıldızlar, en iyi skorlar, günlük seri, satın alma sayısı, reklamların kaldırılıp kaldırılmadığı, oyun dili, platform (Android/iOS), uygulama sürümü, ilk ve son oynama zamanı. Bu kayıt için oyun, Firebase Authentication ile anonim bir kimlik oluşturur; bu kimlik adınla, e-postanla veya bir hesapla bağlantılı değildir. Kayda yalnızca senin cihazın yazabilir; başka oyuncular göremez. Kaydın silinmesini istersen Ayarlar'daki oyuncu kimliğinle bize yaz.</p>
+
     <h2>Reklamlar</h2>
     <p>Oyun, Google AdMob aracılığıyla sadece ödüllü reklam gösterir. Ödüllü reklamlar tamamen isteğe bağlıdır: ipucu, ek hamle veya altın gibi bir ödül için izlemeyi sen seçersin. Zorunlu reklam yoktur. AdMob; cihaz reklam kimliğini, yaklaşık konumu (IP adresinden), cihaz bilgilerini ve reklam etkileşimlerini reklam göstermek, ölçmek ve dolandırıcılığı önlemek için işleyebilir.</p>
     <ul>
@@ -78,7 +81,7 @@
         <thead><tr><th>Hizmet</th><th>Amaç</th><th>Gizlilik politikası</th></tr></thead>
         <tbody>
           <tr><td>Google Analytics for Firebase</td><td>Oyun istatistikleri</td><td><a href="https://firebase.google.com/support/privacy" rel="noopener">firebase.google.com/support/privacy</a></td></tr>
-          <tr><td>Google Firebase Hosting / Cloud Firestore</td><td>Yeni bölüm dosyaları, altın hediyeleri</td><td><a href="https://firebase.google.com/support/privacy" rel="noopener">firebase.google.com/support/privacy</a></td></tr>
+          <tr><td>Google Firebase Hosting / Cloud Firestore / Authentication</td><td>Yeni bölüm dosyaları, altın hediyeleri, oyuncu özeti, anonim kimlik</td><td><a href="https://firebase.google.com/support/privacy" rel="noopener">firebase.google.com/support/privacy</a></td></tr>
           <tr><td>Google AdMob</td><td>Ödüllü reklamlar</td><td><a href="https://policies.google.com/privacy" rel="noopener">policies.google.com/privacy</a></td></tr>
           <tr><td>RevenueCat</td><td>Satın alma doğrulama</td><td><a href="https://www.revenuecat.com/privacy" rel="noopener">revenuecat.com/privacy</a></td></tr>
           <tr><td>Google Play / Apple App Store</td><td>Ödeme</td><td><a href="https://policies.google.com/privacy" rel="noopener">Google</a> · <a href="https://www.apple.com/legal/privacy/" rel="noopener">Apple</a></td></tr>
@@ -99,7 +102,7 @@
 
   <section id="en" lang="en">
     <h1>Lexiblok Privacy Policy</h1>
-    <p class="meta">Last updated: October 14, 2026 · Developer: Alay Studio</p>
+    <p class="meta">Last updated: October 15, 2026 · Developer: Alay Studio</p>
 
     <p>Lexiblok: Word Block Puzzle is a word and block puzzle game you play without creating an account. This page explains what data is processed, why, where it is stored and what your rights are.</p>
 
@@ -125,6 +128,9 @@
     <h2>New levels and gifts</h2>
     <p>So that new levels arrive without an app update, the game downloads level files from our server (Google Firebase Hosting) when it starts. It also asks Google Cloud Firestore, using your player ID, whether a coin gift has been set for you or for all players; nothing else is sent in this request. No personal data is sent in this request. As with any web server, your IP address and the time of the request may be kept briefly in Google's server logs for security and operations.</p>
 
+    <h2>Player summary</h2>
+    <p>To give support (for example, to restore lost coins) and to improve the game, the game keeps a summary of your progress in a record tied to your player ID in Google Cloud Firestore: coin balance, booster counts, number of levels won, highest level reached, stars, best scores, daily streak, number of purchases, whether ads were removed, game language, platform (Android/iOS), app version, and first and last play time. For this record the game creates an anonymous identity with Firebase Authentication; it is not linked to your name, email or any account. Only your device can write to the record; other players cannot see it. To have the record deleted, email us with the player ID shown in Settings.</p>
+
     <h2>Ads</h2>
     <p>The game shows only rewarded ads, through Google AdMob. Rewarded ads are always optional: you choose to watch one for a reward such as a hint, extra moves or coins. There are no forced ads. AdMob may process your device's advertising ID, approximate location (from IP address), device information and ad interactions to serve and measure ads and to prevent fraud.</p>
     <ul>
@@ -147,7 +153,7 @@
         <thead><tr><th>Service</th><th>Purpose</th><th>Privacy policy</th></tr></thead>
         <tbody>
           <tr><td>Google Analytics for Firebase</td><td>Gameplay statistics</td><td><a href="https://firebase.google.com/support/privacy" rel="noopener">firebase.google.com/support/privacy</a></td></tr>
-          <tr><td>Google Firebase Hosting / Cloud Firestore</td><td>New level files, coin gifts</td><td><a href="https://firebase.google.com/support/privacy" rel="noopener">firebase.google.com/support/privacy</a></td></tr>
+          <tr><td>Google Firebase Hosting / Cloud Firestore / Authentication</td><td>New level files, coin gifts, player summary, anonymous identity</td><td><a href="https://firebase.google.com/support/privacy" rel="noopener">firebase.google.com/support/privacy</a></td></tr>
           <tr><td>Google AdMob</td><td>Rewarded ads</td><td><a href="https://policies.google.com/privacy" rel="noopener">policies.google.com/privacy</a></td></tr>
           <tr><td>RevenueCat</td><td>Purchase verification</td><td><a href="https://www.revenuecat.com/privacy" rel="noopener">revenuecat.com/privacy</a></td></tr>
           <tr><td>Google Play / Apple App Store</td><td>Payments</td><td><a href="https://policies.google.com/privacy" rel="noopener">Google</a> · <a href="https://www.apple.com/legal/privacy/" rel="noopener">Apple</a></td></tr>
