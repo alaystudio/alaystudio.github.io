@@ -8,7 +8,7 @@ güçlendirici gibi değerlerini değiştirebilir ya da hediye gönderebilirsin.
 | Oyun | Veri nerede | Kimlik oyunda nerede | Değiştirilebilen değerler | Senin yapman gereken |
 |---|---|---|---|---|
 | Lexiblok | Firebase `word-blocks-game` | Ayarlar → Oyuncu kimliği | `coins`, `hint`, `shuffle`, `bomb` | Anonymous girişin açık olduğunu kontrol et (bölüm 2) |
-| Orbitap | Firebase `orbitap-game` | Ayarlar → Oyuncu kimliği | `stars` | Anonymous aç, kuralları yayınla |
+| Orbitap | Firebase `orbitap-game` | Güçler → en altta | `stars` | Anonymous aç, kuralları yayınla |
 | Bloom Blast | Firebase `bloom-blast-game` | Ayarlar → en altta | `seeds`, `hammer`, `bomb`, `shuffle` | Anonymous aç, kuralları ve gizlilik sayfasını yayınla |
 | Shoova | Firebase `shoova-game` | Ayarlar → Oyuncu kimliği | `hint`, `grab` | Firestore oluştur, Anonymous aç, web uygulaması ekleyip apiKey'i bana gönder, kuralları ve gizlilik sayfasını yayınla |
 | Drift Garden | Henüz yok (kapalı) | Açılınca Ayarlar'da | `stars` | Firebase projesi kur (bölüm 7) |
@@ -61,7 +61,7 @@ Belgede neler var:
 |---|---|
 | Hepsi | `pid`, `platform` (android/ios/web), `version`, `lang`, `firstSeen`, `lastSeen` |
 | Lexiblok | `coins`, `hint`, `shuffle`, `bomb`, `enLevelsWon`/`trLevelsWon`, `enTopLevel`/`trTopLevel`, yıldız, klasik en iyi, `streak`, `dailyPlayed`, `purchases`, `noAds` |
-| Orbitap | `name` (sıralama adı), `best`, `stars`, `totalStars`, `games`, `playMinutes`, `streak`, `skin`, `skinsOwned`, `upgShield`/`upgMagnet`/`upgSlow`/`upgDouble`, `maxRings`, `control`, `challengeBest`, `noAds`, `boardId` |
+| Orbitap | `name` (sıralama adı), `best`, `stars`, `totalStars`, `games`, `playMinutes`, `streak`, `skin`, `skinsOwned`, `upgShield`/`upgMagnet`/`upgSlow`/`upgDouble`, `maxRings`, `challengeBest`, `noAds`, `boardId` |
 | Bloom Blast | `level`, `stars`, `classicBest`, `seeds`, `hammer`, `bomb`, `shuffle`, `garden`, `gardenSteps`, `gardensDone`, `dailyStreak`, `noAds`, `installId` |
 | Shoova | `level`, `levelsCleared`, `stars`, `hint`, `grab`, `noAds` |
 | Drift Garden | `stars`, `songsOwned`, `songsPlayed`, `plays`, `balloonsOwned`, `decor`, `blooms`, `mode` |
