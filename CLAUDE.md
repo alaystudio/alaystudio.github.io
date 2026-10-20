@@ -1,7 +1,7 @@
 # alaystudio.app — Claude için notlar
 
 Kullanıcıyla **Türkçe** konuş. Bu repo Alay Studio'nun vitrin sitesi (GitHub Pages, özel alan adı `alaystudio.app`).
-Ayrıntılar ve alan adı kurulumu: `README.md`. Oyunların web yayını (Cloudflare Pages, DNS, yeni oyun ekleme): **`YAYIN.md`**.
+Ayrıntılar ve alan adı kurulumu: `README.md`. Oyunların web yayını (Cloudflare Pages, DNS, yeni oyun ekleme): **`YAYIN.md`**. Oyuncu kimliği, Firestore oyuncu özeti, hediyeler ve Koz Kimde istatistikleri: **`OYUNCU-VERILERI.md`**.
 
 - Saf HTML; kütüphane ve build yok. Sayfa metinleri EN/TR, `index.html` içindeki `T` sözlüğünde; oyunlar `GAMES` dizisinde.
 - **Dokunma:** `mobilegame/privacy.html`, `word-blocks/privacy.html`, `app-ads.txt` — mağaza kayıtları bu yollara bağlı.

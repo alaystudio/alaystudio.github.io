@@ -37,6 +37,7 @@ Sonra AdMob'da geliştirici web sitesi olarak `https://alaystudio.app` girilir v
 
 ## Oyunların alt alan adları (Cloudflare Pages)
 Adım adım rehber, DNS kayıtları, yeni oyun ekleme ve sorun giderme: **[YAYIN.md](YAYIN.md)**.
+Oyuncu kimliği, oyuncu özeti ve hediyeler: **[OYUNCU-VERILERI.md](OYUNCU-VERILERI.md)**.
 
 Her oyun kendi reposundan yayınlanır. Repolarda `scripts/build-web.mjs` var; yalnızca service worker'ın listelediği dosyaları
 `web/` klasörüne kopyalar (native projeler, mağaza görselleri ve notlar siteye çıkmaz). Web sürümünde reklam ve satın alma yoktur.
