@@ -28,7 +28,7 @@ www.alaystudio.app        → vitrine yönlenir
 | Shoova | `alaystudio/shoova` | `main` | `shoova.pages.dev` | `node scripts/build-web.mjs` | `web` | shoova.alaystudio.app |
 | Drift Garden | `alaystudio/drift-garden` | `main` | `drift-garden.pages.dev` | `node scripts/build-web.mjs` | `web` | driftgarden.alaystudio.app |
 | Koz Kimde | `alaystudio/batak` | `main` | `batak-4n2.pages.dev` | `node scripts/build-web.mjs` | `web` | kozkimde.alaystudio.app |
-| Kanasta | `alaystudio/kanasta` | `main` | (kurulacak) | `node scripts/build-web.mjs` | `web` | kanasta.alaystudio.app |
+| Kanasta | `alaystudio/kanasta` | `main` | `kanasta.pages.dev` | `node scripts/build-web.mjs` | `web` | kanasta.alaystudio.app |
 
 Hepsinde ortak ayarlar:
 - **Framework preset:** None.
@@ -56,6 +56,7 @@ Oyunlara özel notlar:
 | CNAME | `shoova` | `shoova.pages.dev` | Oyun |
 | CNAME | `driftgarden` | `drift-garden.pages.dev` | Oyun |
 | CNAME | `kozkimde` | `batak-4n2.pages.dev` | Oyun |
+| CNAME | `kanasta` | `kanasta.pages.dev` | Oyun |
 
 Oyunların CNAME kayıtlarını Cloudflare, "Custom domain" eklenince **kendisi** oluşturur; elle eklenmez.
 **SSL/TLS modu:** Full. Flexible olursa vitrinde "too many redirects" hatası çıkar.
