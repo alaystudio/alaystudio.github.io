@@ -28,6 +28,7 @@ www.alaystudio.app        → vitrine yönlenir
 | Shoova | `alaystudio/shoova` | `main` | `shoova.pages.dev` | `node scripts/build-web.mjs` | `web` | shoova.alaystudio.app |
 | Drift Garden | `alaystudio/drift-garden` | `main` | `drift-garden.pages.dev` | `node scripts/build-web.mjs` | `web` | driftgarden.alaystudio.app |
 | Koz Kimde | `alaystudio/batak` | `main` | `batak-4n2.pages.dev` | `node scripts/build-web.mjs` | `web` | kozkimde.alaystudio.app |
+| Kanasta | `alaystudio/kanasta` | `main` | (kurulacak) | `node scripts/build-web.mjs` | `web` | kanasta.alaystudio.app |
 
 Hepsinde ortak ayarlar:
 - **Framework preset:** None.
@@ -38,6 +39,8 @@ Oyunlara özel notlar:
 - **Orbitap:** Repoda başka dallar da olduğu için **Preview branches: None** olmalı.
 - **Lexiblok:** Seviye paketlerini `word-blocks-game.web.app`'ten (Firebase Hosting) çeker. O sunucu her alan adına izin
   veriyor (CORS `*`).
+- **Kanasta:** Online sunucu `kanasta.alaystudio.workers.dev`, gizlilik sayfası `kanasta-oyun.web.app` (Firebase Hosting). Derleme
+  manifest + service worker'ı kendi üretir (`ASSETS` listesi elle tutulmaz). Repoda `kurulum-*` dalları da var: **Preview branches: None**.
 - **Koz Kimde:** Şimdilik bilgisayara karşı tek kişilik. Gizlilik sayfası henüz yok; mağazaya çıkmadan önce yazılmalı.
 
 ### DNS kayıtları (Cloudflare)

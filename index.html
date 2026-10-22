@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Alay Studio</title>
-<meta name="description" content="Alay Studio makes short, replayable mobile games: Orbitap, Lexiblok, Bloom Blast, Shoova, Drift Garden and Koz Kimde.">
+<meta name="description" content="Alay Studio makes short, replayable mobile games: Orbitap, Lexiblok, Bloom Blast, Shoova, Drift Garden, Koz Kimde and Kanasta.">
 <meta property="og:title" content="Alay Studio">
 <meta property="og:description" content="Short, replayable mobile games. No accounts, no energy timers.">
 <meta property="og:type" content="website">
@@ -216,6 +216,11 @@
       genre: { en: 'Batak card game', tr: 'Batak kart oyunu' },
       pitch: { en: 'Turkish Batak: win the bid, call trumps and take your tricks.', tr: 'Batak: ihaleyi al, kozu seç, elleri topla.' },
       spec: null },
+    { id: 'kanasta', name: 'Kanasta', icon: 'games/kanasta.png', g1: '#3d0d14', g2: '#9a2a36', status: 'soon',
+      web: null, appStore: null, playStore: null, privacy: 'https://kanasta-oyun.web.app/privacy.html',
+      genre: { en: 'Canasta card game', tr: 'Kanasta kart oyunu' },
+      pitch: { en: 'Meld runs and sets with your partner, build canastas and grab the Angel. Play bots offline or friends online.', tr: 'Eşinle sıralı ve aynı değerli seriler aç, kanasta yap, Angel’ı kap. Botlara karşı internetsiz ya da arkadaşlarınla online.' },
+      spec: { en: '3 or 4 players · teams · online rooms', tr: '3 veya 4 kişi · eşli · online oda' } },
   ];
   const T = {
     en: {
@@ -265,8 +270,8 @@
     // opens the visitor's mail app with the address and subject filled in; the address is not shown on the page
     $('mail').href = `mailto:${MAIL}?subject=${encodeURIComponent(t.mailSubject)}`;
 
-    const tilts = [-8, 5, -3, 7, -6, 4];
-    const spots = [[2, 6], [37, 0], [70, 10], [6, 52], [40, 44], [72, 58]];
+    const tilts = [-8, 5, -3, 7, -6, 4, -4];
+    const spots = [[2, 4], [37, 0], [71, 6], [4, 40], [38, 36], [72, 42], [21, 67]];
     $('shelf').innerHTML = GAMES.map((g, i) => `<a href="#${g.id}" style="left:${spots[i][0]}%;top:${spots[i][1]}%;--r:${tilts[i]}deg" aria-label="${esc(g.name)}"><img src="${g.icon}" alt="" width="192" height="192"></a>`).join('');
 
     $('gameList').innerHTML = GAMES.map((g) => {

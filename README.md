@@ -50,6 +50,7 @@ Her oyun kendi reposundan yayınlanır. Repolarda `scripts/build-web.mjs` var; y
 | Drift Garden | `alaystudio/drift-garden` | `main` | `driftgarden.alaystudio.app` |
 | Lexiblok | `alaystudio/lexiblok` | `main` | `lexiblok.alaystudio.app` (build `node tools/build.js`, çıktı `dist`) |
 | Koz Kimde | `alaystudio/batak` | `main` | `kozkimde.alaystudio.app` |
+| Kanasta | `alaystudio/kanasta` | `main` | `kanasta.alaystudio.app` (Pages projesi kurulacak) |
 
 Cloudflare proje adresleri: `mobilegame-4jx`, `lexiblok`, `bloom-blast`, `shoova`, `drift-garden`, `batak-4n2` (`.pages.dev`).
 alaystudio.app DNS'i Cloudflare'de; alt alan adlarının CNAME kayıtlarını Cloudflare kendisi oluşturdu.
