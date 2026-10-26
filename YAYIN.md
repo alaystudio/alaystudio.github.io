@@ -41,7 +41,7 @@ Oyunlara özel notlar:
   veriyor (CORS `*`).
 - **Kanasta:** Online sunucu `kanasta.alaystudio.workers.dev`, gizlilik sayfası `kanasta-oyun.web.app` (Firebase Hosting). Derleme
   manifest + service worker'ı kendi üretir (`ASSETS` listesi elle tutulmaz). Repoda `kurulum-*` dalları da var: **Preview branches: None**.
-- **Koz Kimde:** Şimdilik bilgisayara karşı tek kişilik. Gizlilik sayfası henüz yok; mağazaya çıkmadan önce yazılmalı.
+- **Koz Kimde:** Botlara karşı ve online (sunucu `koz-kimde.alaystudio.workers.dev`). Gizlilik sayfası `koz-kimde.web.app/privacy.html` (Firebase Hosting). Repoda `release-*` dalları var; web'e çıkması için `main`'e alınmalı.
 
 ### DNS kayıtları (Cloudflare)
 
