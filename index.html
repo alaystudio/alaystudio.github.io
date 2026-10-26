@@ -235,7 +235,7 @@
       p2t: 'Private by default', p2: 'No sign-up. Scores and settings are saved on your device, not on our servers.',
       p3t: 'Endless by design', p3: 'Seeded level generators mean every player gets the same fair level, and there is always a next one.',
       play: 'Play on the web', webSoon: 'Web version soon', privacy: 'Privacy', appStore: 'App Store', playStore: 'Google Play',
-      soon: 'Coming to App Store & Google Play', dev: 'In development', live: 'Available now', privacyOf: '{name} privacy',
+      soon: 'Coming to App Store & Google Play', dev: 'In development', live: 'Live on the App Store', liveAndroid: 'Live on Google Play', liveBoth: 'Live on the App Store & Google Play', privacyOf: '{name} privacy',
     },
     tr: {
       navGames: 'Oyunlar', navAbout: 'Hakkında', heroA: 'Küçük oyunlar,', heroSpan: 'bitmeyen keyif.',
@@ -249,7 +249,7 @@
       p2t: 'Gizlilik öncelikli', p2: 'Kayıt yok. Skorların ve ayarların cihazında saklanır, sunucularımızda değil.',
       p3t: 'Sonsuz tasarım', p3: 'Tohumlu seviye üreteçleri sayesinde herkes aynı adil seviyeyi oynar ve her zaman bir sonraki seviye vardır.',
       play: 'Web\'de oyna', webSoon: 'Web sürümü yakında', privacy: 'Gizlilik', appStore: 'App Store', playStore: 'Google Play',
-      soon: 'App Store ve Google Play\'e geliyor', dev: 'Geliştiriliyor', live: 'Şimdi oynanabilir', privacyOf: '{name} gizlilik',
+      soon: 'App Store ve Google Play\'e geliyor', dev: 'Geliştiriliyor', live: 'App Store\'da yayında', liveAndroid: 'Google Play\'de yayında', liveBoth: 'App Store ve Google Play\'de yayında', privacyOf: '{name} gizlilik',
     },
   };
   const DOTS = { soon: '#f5a524', dev: '#7c8a99', live: '#22b573' };
@@ -275,6 +275,8 @@
     $('shelf').innerHTML = GAMES.map((g, i) => `<a href="#${g.id}" style="left:${spots[i][0]}%;top:${spots[i][1]}%;--r:${tilts[i]}deg" aria-label="${esc(g.name)}"><img src="${g.icon}" alt="" width="192" height="192"></a>`).join('');
 
     $('gameList').innerHTML = GAMES.map((g) => {
+      // a live game names the store(s) it is on
+      const status = g.status !== 'live' ? g.status : g.appStore && g.playStore ? 'liveBoth' : g.playStore ? 'liveAndroid' : 'live';
       const stores = [g.appStore && `<a class="link" href="${g.appStore}" rel="noopener">${t.appStore}</a>`, g.playStore && `<a class="link" href="${g.playStore}" rel="noopener">${t.playStore}</a>`].filter(Boolean).join('');
       return `<article class="game" id="${g.id}" style="--g1:${g.g1};--g2:${g.g2}">
         <div class="cover"><img src="${g.icon}" alt="" width="84" height="84"><span class="genre mono">${esc(g.genre[lang])}</span></div>
@@ -282,7 +284,7 @@
           <h3>${esc(g.name)}</h3>
           <p class="pitch">${esc(g.pitch[lang])}</p>
           ${g.spec ? `<p class="spec mono">${esc(g.spec[lang])}</p>` : ''}
-          <ul class="meta"><li class="status" style="--dot:${DOTS[g.status]}">${esc(t[g.status])}</li></ul>
+          <ul class="meta"><li class="status" style="--dot:${DOTS[g.status]}">${esc(t[status])}</li></ul>
           <div class="actions">
             ${g.web ? `<a class="btn" href="${g.web}">${t.play} →</a>` : `<span class="btn" aria-disabled="true">${t.webSoon}</span>`}
             ${stores}
