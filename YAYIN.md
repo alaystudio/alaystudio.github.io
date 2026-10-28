@@ -98,7 +98,8 @@ Bu bayrak açıkken:
 
 Ödül veren bir şey reklama bağlıysa, web'de oyuncunun o yolu kilitli kalmamalı.
 
-**App Store tanıtım kartı (`promo.js`):** Web sürümünde açılıştan 2,5 sn sonra altta küçük bir "App Store'da indir" kartı
+**Ana sayfa bağlantısı ve App Store tanıtım kartı (`promo.js`):** Web sürümünün ana ekranında, butonların altında
+"← Alay Studio · Tüm oyunlar" bağlantısı (alaystudio.app'e gider) durur; yeri dosyadaki `HOME` seçicisiyle belirlenir. Ayrıca açılıştan 2,5 sn sonra altta küçük bir "App Store'da indir" kartı
 çıkar. Günde en fazla bir kez görünür; oyuncu bir yere dokununca kaybolur. Uygulama içinde ve Android'de (Play linki henüz
 yok) gösterilmez. Mağazada olan oyun kendini, olmayan bir kardeş oyunu tanıtır (Kanasta → Koz Kimde, Shoova ve Drift Garden →
 Bloom Blast). Ayar dosyanın başındaki `PROMO` nesnesinde. Dosyanın yeri: kök (`sw.js` → `ASSETS`'te), Lexiblok'ta
