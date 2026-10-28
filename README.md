@@ -8,7 +8,9 @@ Saf HTML, build adımı yok. GitHub Pages ile yayınlanır.
 |---|---|
 | `index.html` | Vitrin. Oyun listesi sayfanın altındaki `GAMES` dizisinde |
 | `games/` | Oyun ikonları |
+| `privacy.html` | Sitenin ve web sürümlerinin gizlilik politikası (AdSense bu adresi kullanıyor) |
 | `<oyun>/privacy.html` | Gizlilik politikaları (TR + EN) |
+| `ads.txt`, `logo.png` | AdSense yayıncı kaydı ve onay penceresi logosu |
 | `app-ads.txt` | AdMob yayıncı kaydı. **Silme, adını değiştirme** |
 | `404.html`, `favicon.svg` | |
 

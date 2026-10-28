@@ -236,7 +236,7 @@
       p2t: 'Private by default', p2: 'No sign-up. Scores and settings are saved on your device, not on our servers.',
       p3t: 'Endless by design', p3: 'Seeded level generators mean every player gets the same fair level, and there is always a next one.',
       play: 'Play on the web', webSoon: 'Web version soon', privacy: 'Privacy', appStore: 'App Store', playStore: 'Google Play',
-      soon: 'Coming to App Store & Google Play', dev: 'In development', live: 'Live on the App Store', liveAndroid: 'Live on Google Play', liveBoth: 'Live on the App Store & Google Play', privacyOf: '{name} privacy',
+      soon: 'Coming to App Store & Google Play', dev: 'In development', live: 'Live on the App Store', liveAndroid: 'Live on Google Play', liveBoth: 'Live on the App Store & Google Play', privacyOf: '{name} privacy', privacySite: 'Privacy policy',
     },
     tr: {
       navGames: 'Oyunlar', navAbout: 'Hakkında', heroA: 'Küçük oyunlar,', heroSpan: 'bitmeyen keyif.',
@@ -250,7 +250,7 @@
       p2t: 'Gizlilik öncelikli', p2: 'Kayıt yok. Skorların ve ayarların cihazında saklanır, sunucularımızda değil.',
       p3t: 'Sonsuz tasarım', p3: 'Tohumlu seviye üreteçleri sayesinde herkes aynı adil seviyeyi oynar ve her zaman bir sonraki seviye vardır.',
       play: 'Web\'de oyna', webSoon: 'Web sürümü yakında', privacy: 'Gizlilik', appStore: 'App Store', playStore: 'Google Play',
-      soon: 'App Store ve Google Play\'e geliyor', dev: 'Geliştiriliyor', live: 'App Store\'da yayında', liveAndroid: 'Google Play\'de yayında', liveBoth: 'App Store ve Google Play\'de yayında', privacyOf: '{name} gizlilik',
+      soon: 'App Store ve Google Play\'e geliyor', dev: 'Geliştiriliyor', live: 'App Store\'da yayında', liveAndroid: 'Google Play\'de yayında', liveBoth: 'App Store ve Google Play\'de yayında', privacyOf: '{name} gizlilik', privacySite: 'Gizlilik politikası',
     },
   };
   const DOTS = { soon: '#f5a524', dev: '#7c8a99', live: '#22b573' };
@@ -295,7 +295,7 @@
       </article>`;
     }).join('');
 
-    $('privacyLinks').innerHTML = GAMES.filter((g) => g.privacy).map((g) => `<li><a href="${g.privacy}">${esc(t.privacyOf.replace('{name}', g.name))}</a></li>`).join('');
+    $('privacyLinks').innerHTML = `<li><a href="privacy.html">${t.privacySite}</a></li>` + GAMES.filter((g) => g.privacy).map((g) => `<li><a href="${g.privacy}">${esc(t.privacyOf.replace('{name}', g.name))}</a></li>`).join('');
   }
 
   $('lang').addEventListener('click', () => {
