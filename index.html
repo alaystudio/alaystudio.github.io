@@ -84,6 +84,8 @@
   .game .cover .genre { align-self: flex-start; padding: 5px 10px; border-radius: 999px; background: rgba(0, 0, 0, 0.28); color: #fff; }
   .game .body { display: flex; flex-direction: column; gap: 10px; padding: 18px; flex: 1; }
   .game h3 { margin: 0; font: 800 26px/1.1 var(--display); letter-spacing: -0.015em; }
+  .game h3 a { text-decoration: none; }
+  .game h3 a:hover { text-decoration: underline; }
   .game .pitch { margin: 0; color: var(--muted); }
   .game .spec { margin: 0; color: var(--muted); }
   .meta { display: flex; flex-wrap: wrap; gap: 6px; padding: 0; margin: 0; list-style: none; }
@@ -178,6 +180,7 @@
 <footer>
   <div class="wrap">
     <span>© 2026 Alay Studio</span>
+    <ul class="gamenav"><li><a href="orbitap/">Orbitap</a></li><li><a href="lexiblok/">Lexiblok</a></li><li><a href="bloom-blast/">Bloom Blast</a></li><li><a href="shoova/">Shoova</a></li><li><a href="drift-garden/">Drift Garden</a></li><li><a href="koz-kimde/">Koz Kimde</a></li><li><a href="kanasta/">Kanasta</a></li></ul>
     <ul id="privacyLinks"></ul>
   </div>
 </footer>
@@ -189,9 +192,9 @@
   const GAMES = [
     { id: 'orbitap', name: 'Orbitap', icon: 'games/orbitap.png', g1: '#0b1030', g2: '#1b5c86', status: 'live',
       web: 'https://orbitap.alaystudio.app/', appStore: 'https://apps.apple.com/app/id6816073799', playStore: null, privacy: 'mobilegame/privacy.html',
-      genre: { en: 'One-tap arcade', tr: 'Tek dokunuş arcade' },
-      pitch: { en: 'Tap to jump between orbits, dodge at the last moment for a PERFECT, and race everyone on the same daily course.', tr: 'Dokunarak yörünge değiştir, son anda kaçıp PERFECT yap ve günlük parkurda herkesle yarış.' },
-      spec: { en: '1 tap · 30–120 s runs · daily challenge', tr: '1 dokunuş · 30–120 sn turlar · günlük meydan okuma' } },
+      genre: { en: 'Swipe & dodge arcade', tr: 'Kaydır ve kaç arcade' },
+      pitch: { en: 'Swipe to switch orbits, dodge at the last moment for a PERFECT, and race everyone on the same daily course.', tr: 'Kaydırarak yörünge değiştir, son anda kaçıp PERFECT yap ve günlük parkurda herkesle yarış.' },
+      spec: { en: 'Swipe controls · power-ups · daily challenge', tr: 'Kaydırarak oyna · güçler · günlük meydan okuma' } },
     { id: 'lexiblok', name: 'Lexiblok', icon: 'games/lexiblok.png', g1: '#0f2a2c', g2: '#1f6a5e', status: 'live',
       web: 'https://lexiblok.alaystudio.app/', appStore: 'https://apps.apple.com/app/id6817607355', playStore: null, privacy: 'word-blocks/privacy.html',
       genre: { en: 'Word & block puzzle', tr: 'Kelime ve blok bulmaca' },
@@ -201,7 +204,7 @@
       web: 'https://bloomblast.alaystudio.app/', appStore: 'https://apps.apple.com/app/id6817362836', playStore: null, privacy: 'https://bloom-blast-game.web.app/privacy.html',
       genre: { en: 'Block puzzle + garden', tr: 'Blok bulmaca + bahçe' },
       pitch: { en: 'Clear lines to earn seeds and grow a garden that blooms with every combo.', tr: 'Satır temizleyip tohum kazan, her komboda çiçek açan bahçeni büyüt.' },
-      spec: { en: '8×8 board · endless levels · 2 gardens', tr: '8×8 tahta · sınırsız seviye · 2 bahçe' } },
+      spec: { en: '8×8 board · hundreds of levels · 7 gardens', tr: '8×8 tahta · yüzlerce seviye · 7 bahçe' } },
     { id: 'shoova', name: 'Shoova', icon: 'games/shoova.png', g1: '#134247', g2: '#2f8f95', status: 'dev',
       web: 'https://shoova.alaystudio.app/', appStore: null, playStore: null, privacy: 'https://shoova-game.web.app/privacy.html',
       genre: { en: 'Tap-away puzzle', tr: 'Kaçırma bulmacası' },
@@ -236,7 +239,7 @@
       p2t: 'Private by default', p2: 'No sign-up. Scores and settings are saved on your device, not on our servers.',
       p3t: 'Endless by design', p3: 'Seeded level generators mean every player gets the same fair level, and there is always a next one.',
       play: 'Play on the web', webSoon: 'Web version soon', privacy: 'Privacy', appStore: 'App Store', playStore: 'Google Play',
-      soon: 'Coming to App Store & Google Play', dev: 'In development', live: 'Live on the App Store', liveAndroid: 'Live on Google Play', liveBoth: 'Live on the App Store & Google Play', privacyOf: '{name} privacy', privacySite: 'Privacy policy',
+      soon: 'Coming to App Store & Google Play', dev: 'In development', live: 'Live on the App Store', liveAndroid: 'Live on Google Play', liveBoth: 'Live on the App Store & Google Play', privacyOf: '{name} privacy', privacySite: 'Privacy policy', guide: 'How to play & tips',
     },
     tr: {
       navGames: 'Oyunlar', navAbout: 'Hakkında', heroA: 'Küçük oyunlar,', heroSpan: 'bitmeyen keyif.',
@@ -250,7 +253,7 @@
       p2t: 'Gizlilik öncelikli', p2: 'Kayıt yok. Skorların ve ayarların cihazında saklanır, sunucularımızda değil.',
       p3t: 'Sonsuz tasarım', p3: 'Tohumlu seviye üreteçleri sayesinde herkes aynı adil seviyeyi oynar ve her zaman bir sonraki seviye vardır.',
       play: 'Web\'de oyna', webSoon: 'Web sürümü yakında', privacy: 'Gizlilik', appStore: 'App Store', playStore: 'Google Play',
-      soon: 'App Store ve Google Play\'e geliyor', dev: 'Geliştiriliyor', live: 'App Store\'da yayında', liveAndroid: 'Google Play\'de yayında', liveBoth: 'App Store ve Google Play\'de yayında', privacyOf: '{name} gizlilik', privacySite: 'Gizlilik politikası',
+      soon: 'App Store ve Google Play\'e geliyor', dev: 'Geliştiriliyor', live: 'App Store\'da yayında', liveAndroid: 'Google Play\'de yayında', liveBoth: 'App Store ve Google Play\'de yayında', privacyOf: '{name} gizlilik', privacySite: 'Gizlilik politikası', guide: 'Nasıl oynanır, ipuçları',
     },
   };
   const DOTS = { soon: '#f5a524', dev: '#7c8a99', live: '#22b573' };
@@ -282,12 +285,13 @@
       return `<article class="game" id="${g.id}" style="--g1:${g.g1};--g2:${g.g2}">
         <div class="cover"><img src="${g.icon}" alt="" width="84" height="84"><span class="genre mono">${esc(g.genre[lang])}</span></div>
         <div class="body">
-          <h3>${esc(g.name)}</h3>
+          <h3><a href="${g.id}/">${esc(g.name)}</a></h3>
           <p class="pitch">${esc(g.pitch[lang])}</p>
           ${g.spec ? `<p class="spec mono">${esc(g.spec[lang])}</p>` : ''}
           <ul class="meta"><li class="status" style="--dot:${DOTS[g.status]}">${esc(t[status])}</li></ul>
           <div class="actions">
             ${g.web ? `<a class="btn" href="${g.web}">${t.play} →</a>` : `<span class="btn" aria-disabled="true">${t.webSoon}</span>`}
+            <a class="link" href="${g.id}/">${t.guide}</a>
             ${stores}
             ${g.privacy ? `<a class="link" href="${g.privacy}">${t.privacy}</a>` : ''}
           </div>

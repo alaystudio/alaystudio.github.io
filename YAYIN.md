@@ -179,9 +179,12 @@ Ortam değişkeni unutulduysa sonradan eklenebilir:
    | `genre`, `pitch`, `spec` | `{ en, tr }` metinleri: tür, tek cümlelik tanıtım, kısa özellik satırı (`spec` boş olabilir) |
 
 3. **Gizlilik sayfası:** Burada tutulacaksa `<oyun-id>/privacy.html` (TR + EN). Mevcut sayfaları örnek al.
-4. **Sayfa açıklaması:** `<meta name="description">` içindeki oyun listesine yeni oyunu ekle.
-5. **Kayıt tabloları:** Bu belgedeki tabloya (bölüm 2) ve `README.md`'deki tabloya satır ekle.
-6. **Yayın:** Commit ve push. GitHub Pages birkaç dakikada yayınlar.
+4. **Oyun sayfası:** `<oyun-id>/index.html` (mevcut bir oyunun sayfasını kopyala; TR ve EN `<article>` blokları),
+   `shots/<oyun-id>/` altına 3–4 WebP ekran görüntüsü, `sitemap.xml`'e adres. Diğer oyun sayfalarının "Diğer oyunlar" ve
+   alt bilgi listelerine de ekle. AdSense "düşük değerli içerik" demesin diye her oyunun kendi içerikli sayfası olmalı.
+5. **Sayfa açıklaması:** `<meta name="description">` içindeki oyun listesine yeni oyunu ekle.
+6. **Kayıt tabloları:** Bu belgedeki tabloya (bölüm 2) ve `README.md`'deki tabloya satır ekle.
+7. **Yayın:** Commit ve push. GitHub Pages birkaç dakikada yayınlar.
 
 ### Aşama 6 — Son kontrol
 

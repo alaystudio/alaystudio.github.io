@@ -8,6 +8,9 @@ Saf HTML, build adımı yok. GitHub Pages ile yayınlanır.
 |---|---|
 | `index.html` | Vitrin. Oyun listesi sayfanın altındaki `GAMES` dizisinde |
 | `games/` | Oyun ikonları |
+| `<oyun-id>/index.html` | Oyun sayfası (TR + EN): tanıtım, ekran görüntüleri, nasıl oynanır, ipuçları, SSS. Ortak stil `page.css`, dil seçimi `page.js` |
+| `shots/<oyun-id>/` | Oyun sayfalarındaki ekran görüntüleri (WebP, mağaza görsellerinden küçültülmüş) |
+| `sitemap.xml`, `robots.txt` | Arama motorları için sayfa listesi. Yeni sayfa eklenince `sitemap.xml`'e satır ekle |
 | `privacy.html` | Sitenin ve web sürümlerinin gizlilik politikası (AdSense bu adresi kullanıyor) |
 | `<oyun>/privacy.html` | Gizlilik politikaları (TR + EN) |
 | `ads.txt`, `logo.png` | AdSense yayıncı kaydı ve onay penceresi logosu |
